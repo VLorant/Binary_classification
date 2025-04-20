@@ -1,1 +1,232 @@
-# Binary_classification
+# Dokumentáció
+
+## Több fájl mód: `automated_file_select_search`
+
+### Bemenetek:
+
+| Név              | Tipus             | Leírás                                                   | alapértelmezett érték |
+|------------------|-------------------|----------------------------------------------------------|-----------------------|
+| `train_path`     | `string`          | A tanításra használt fájlok helye                        | -                     |
+| `test_path`      | `string`          | A tesztelésre használt fájlok helye                      | -                     |
+| `u_model`        | `ClassifierMixin` | A tesztelni kívánt osztályozó                            | -                     |
+| `u_params`       | `dict`            | A tesztelni kívánt paraméterek                           | -                     |
+| `save_file_name` | `string`          | A fájl névének előtagja a menteni kívánt adatokhoz       | -                     |
+| `raw_output`     | `bool`            | Ha nem szeretnénk átlagolni az eredményeket (opcionális) | False                 |
+| `save`           | `bool`            | Ha menteni kívánjuk az eredményket (opcionális)          | False                 |
+
+### Rövid leírás:
+Ez a metódus végig megy a `train_path` váltózóban átadott mappán és a neki megfelelő tesztekhez elvégzi az osztályózó legjobb paramétereinek meghatározását a `search_best_params` függvény segítségével, majd elmenti a szükséges kimenetet.
+
+### Kimenet:
+
+Egy pandas dataframe feltöltve aszükséges mutatőkkal és/vagy json file a mutatókkal.
+
+Tartalmazza:
+
+* Accuracy
+* Sensitivity
+* Specificity
+* F1
+* G-mean
+
+
+
+
+## Egy fájl mód: `search_best_params`
+
+### Bemenetek:
+
+| Név              | Tipus             | Leírás                                                   | alapértelmezett érték |
+|------------------|-------------------|----------------------------------------------------------|-----------------------|
+| `u_model`        | `ClassifierMixin` | A tesztelni kívánt osztályozó                            | -                     |
+| `u_params`       | `dict`            | A tesztelni kívánt paraméterek                           | -                     |
+| `u_train`        | `string`          | A tanításra használni kivánt fájl elerési útja           | -                     |
+| `u_test`         | `list[str]`       | A tesztelésre használni kivánt fájlok elerésí útja       | -                     |
+| `u_features`     | `int`             | A fájlokban található tulajdonságok                      | -                     |
+| `save_file_name` | `string`          | A fájl névének előtagja a menteni kívánt adatokhoz       | -                     |
+| `raw_output`     | `bool`            | Ha nem szeretnénk átlagolni az eredményeket (opcionális) | False                 |
+| `save`           | `bool`            | Ha menteni kívánjuk az eredményket (opcionális)          | False                 |
+
+### Rövid leírás:
+
+A `Scikitlearn`-ben megtalálható `RepeatedStratifiedKFold` és a `GridSearchCV` függvények segítségével meghatározásra kerülnek a legjobb paraméterek az adott osztályozóhoz és elmenti a szükséges adatokat.
+
+### Kimenet:
+
+Egy pandas dataframe feltöltve aszükséges mutatőkkal és/vagy json file a mutatókkal.
+
+Tartalmazza:
+
+* Accuracy
+* Sensitivity
+* Specificity
+* F1
+* G-mean
+
+## További információk:
+
+### `read_arff`: ez a függvény végzi az adatok beolvasását a fájlokból
+
+#### Bemenet:
+Egy arff formátumú fájl
+
+#### Kimenet:
+Egy padnas dataframe a szükséges adatokkal feltöltve.
+
+## Mutatók:
+
+### Accuracy
+
+Mennyire találta el az összes predikciót helyesen.
+
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+Kalkulációhoz: `accuracy_score` függvény
+
+### Sensitivity
+
+A valódi pozitívok közül hányat talált el.
+
+$$
+\text{Sensitivity} = \frac{TP}{TP + FN}
+$$
+
+Kalkulációhoz: `recall_score` függvény
+
+### Specificity
+
+A valódi negatívok közül hányat ismert fel.
+
+$$
+\text{Specificity} = \frac{TN}{TN + FP}
+$$
+
+### F1 Score
+
+A pontosság (precision) és a visszahívás (recall) harmonikus átlaga.
+
+$$
+F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
+Kalkulációhoz: `f1_score` függvény
+
+### G-mean
+
+Egyensúlyozza a pozitív és negatív osztály teljesítményét.
+
+$$
+G\text{-mean} = \sqrt{\text{Sensitivity} \cdot \text{Specificity}}
+$$
+
+## Példa kimenetek:
+
+### Json file:
+
+```json
+{
+  "columns": [
+    "Mean"
+  ],
+  "index": [
+    "Accuracy",
+    "Sensitivity",
+    "Specificity",
+    "F1",
+    "G-mean"
+  ],
+  "data": [
+    [
+      0.7883333333
+    ],
+    [
+      0.2666666667
+    ],
+    [
+      0.8462962963
+    ],
+    [
+      0.2008885455
+    ],
+    [
+      0.4745044847
+    ]
+  ]
+}
+```
+### Pandas dataframe:
+
+|             | Mean         |
+|-------------|--------------|
+| Accuracy    | 0.7883333333 |
+| Sensitivity | 0.2666666667 |
+| Specificity | 0.8462962963 |
+| F1          | 0.2008885455 |
+| G-mean      | 0.4745044847 |
+
+
+## Szükséges könyvtárak:
+
+* Numpy
+* Pandas
+* Sklearn
+* Scipy
+* re
+* io
+* os
+* typing
+
+## Folyamatábra
+### `search_best_params`
+```mermaid
+flowchart TD
+    A[Start] --> B[Beállítjuk a cross-validation-t 'RepeatedStratifiedKFold']
+    B --> C[GridSearchCV objektum létrehozása]
+    C --> D[read_arff függvény definiálása]
+    D --> E[read_arff meghívása tanító fájlra]
+    E --> F[Train adat szétválasztása X és y-ra]
+    F --> G[GridSearchCV fit: tanítás]
+    G --> H[Üres scores DataFrame létrehozása]
+    H --> I[For ciklus: i = 1...3]
+    I --> J[read_arff meghívása i-edik teszt fájlra]
+    J --> K[X_test és y_test létrehozása]
+    K --> L[search.predict meghívása]
+    L --> M[Konfúziós mátrix és metrikák kiszámítása]
+    M --> N{Minden teszt lefutott?}
+    N -- Nem --> I
+    N -- Igen --> O{raw_output == False?}
+    O -- Igen --> P[Átlagolt scores kiszámítása]
+    P --> Q{save == True?}
+    Q -- Igen --> R[Átlagolt scores mentése JSON-be]
+    Q --> S[Átlagolt scores visszaadása]
+    O -- Nem --> T{save == True?}
+    T -- Igen --> U[Raw scores mentése JSON-be]
+    T --> V[Raw scores visszaadása]
+    R --> S
+    U --> V
+    S --> W[End]
+    V --> W
+```
+### `automated_file_select_search`
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Definiáljuk a sorting_params függvényt]
+    B --> C[Kilistázzuk a train_path fájlokat]
+    C --> D[train_files rendezése sorting_params alapján]
+    D --> E[Létrehozzuk a train_and_test_dict szótárat]
+    E --> F[For ciklus: minden train fájlhoz]
+    F --> G[Létrehozzuk a 3 kapcsolódó test fájl elérési útját]
+    G --> H[Hozzárendeljük a train fájlhoz a test fájlokat a szótárban]
+    H --> I[For ciklus: enumerate 'train_and_test_dict']
+    I --> J[Kiírás: melyik fájl kerül feldolgozásra 'index']
+    J --> K[Kinyerjük a D paramétert a fájlnévből]
+    K --> L[Létrehozzuk az egyedi save fájlnevet 'SFN']
+    L --> M[Meghívjuk search_best_params-t]
+    M --> N{Van még fájl?}
+    N -- Igen --> I
+    N -- Nem --> O[End]
+
+```
