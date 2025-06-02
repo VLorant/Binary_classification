@@ -68,5 +68,5 @@
     9,
     10
   ],
-  "class_weight": "balanced"
+  "class_weight": ["balanced"]
 }

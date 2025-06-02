@@ -1,1 +1,0 @@
-{"C": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0], "kernel": "linear", "degree": [2, 3, 4, 5], "gamma": ["scale", "auto"], "coef0": [0.0, 0.1, 0.5, 1.0], "shrinking": [true, false], "probability": [true, false]}

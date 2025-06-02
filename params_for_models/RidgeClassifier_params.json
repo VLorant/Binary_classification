@@ -10,7 +10,7 @@
     1000.0,
     10000.0
   ],
-  "class_weight": "balanced",
+  "class_weight": ["balanced"],
   "solver": [
     "auto",
     "svd",
@@ -18,7 +18,6 @@
     "lsqr",
     "sparse_cg",
     "sag",
-    "saga",
-    "lbfgs"
+    "saga"
   ]
 }

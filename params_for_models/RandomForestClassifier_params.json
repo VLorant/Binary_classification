@@ -980,7 +980,7 @@
     true,
     false
   ],
-  "n_jobs": -1,
+  "n_jobs": [-1],
   "class_weight": [
     "balanced",
     "balanced_subsample"
