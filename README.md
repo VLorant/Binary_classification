@@ -1,5 +1,18 @@
 # Dokumentáció
 
+## Modul felépítés
+
+- binary_classification
+  - config
+  - search_for_classifier
+
+| Név                   | Leírás                                                    |
+|-----------------------|-----------------------------------------------------------|
+| config                | Az összes futtatható osztályozó + hyper paramater tunning |
+| search_for_classifier | Az összes alapvető eszköz a `config` futtatásához         |
+
+
+## Komponensek
 ## Több fájl mód: `automated_file_select_search`
 
 ### Bemenetek:
