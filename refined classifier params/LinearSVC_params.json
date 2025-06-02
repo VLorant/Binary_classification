@@ -1,0 +1,20 @@
+{
+  "penalty": [
+    "l1",
+    "l2"
+  ],
+  "loss": [
+    "hinge",
+    "squared_hinge"
+  ],
+  "dual": [
+    true,
+    false,
+    "auto"
+  ],
+  "fit_intercept": [
+    true,
+    false
+  ],
+  "class_weight": "balanced"
+}

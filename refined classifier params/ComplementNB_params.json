@@ -1,0 +1,25 @@
+{
+  "alpha": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0,
+    1000.0,
+    10000.0
+  ],
+  "norm": [
+    true,
+    false
+  ],
+  "fit_prior": [
+    true,
+    false
+  ],
+  "force_alpha": [
+    true,
+    false
+  ]
+}
