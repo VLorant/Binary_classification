@@ -13,9 +13,9 @@
 
 
 ## Komponensek
-## Több fájl mód: `automated_file_select_search`
+### Több fájl mód: `automated_file_select_search`
 
-### Bemenetek:
+#### Bemenetek:
 
 | Név              | Tipus             | Leírás                                                   | alapértelmezett érték |
 |------------------|-------------------|----------------------------------------------------------|-----------------------|
@@ -27,10 +27,10 @@
 | `raw_output`     | `bool`            | Ha nem szeretnénk átlagolni az eredményeket (opcionális) | False                 |
 | `save`           | `bool`            | Ha menteni kívánjuk az eredményket (opcionális)          | False                 |
 
-### Rövid leírás:
+#### Rövid leírás:
 Ez a metódus végig megy a `train_path` váltózóban átadott mappán és a neki megfelelő tesztekhez elvégzi az osztályózó legjobb paramétereinek meghatározását a `search_best_params` függvény segítségével, majd elmenti a szükséges kimenetet.
 
-### Kimenet:
+#### Kimenet:
 
 Egy pandas dataframe feltöltve aszükséges mutatőkkal és/vagy json file a mutatókkal.
 
@@ -45,9 +45,9 @@ Tartalmazza:
 
 
 
-## Egy fájl mód: `search_best_params`
+### Egy fájl mód: `search_best_params`
 
-### Bemenetek:
+#### Bemenetek:
 
 | Név              | Tipus             | Leírás                                                   | alapértelmezett érték |
 |------------------|-------------------|----------------------------------------------------------|-----------------------|
@@ -60,11 +60,11 @@ Tartalmazza:
 | `raw_output`     | `bool`            | Ha nem szeretnénk átlagolni az eredményeket (opcionális) | False                 |
 | `save`           | `bool`            | Ha menteni kívánjuk az eredményket (opcionális)          | False                 |
 
-### Rövid leírás:
+#### Rövid leírás:
 
 A `Scikitlearn`-ben megtalálható `RepeatedStratifiedKFold` és a `GridSearchCV` függvények segítségével meghatározásra kerülnek a legjobb paraméterek az adott osztályozóhoz és elmenti a szükséges adatokat.
 
-### Kimenet:
+#### Kimenet:
 
 Egy pandas dataframe feltöltve aszükséges mutatőkkal és/vagy json file a mutatókkal.
 
@@ -76,19 +76,19 @@ Tartalmazza:
 * F1
 * G-mean
 
-## További információk:
+### További információk:
 
-### `read_arff`: ez a függvény végzi az adatok beolvasását a fájlokból
+#### `read_arff`: ez a függvény végzi az adatok beolvasását a fájlokból
 
-#### Bemenet:
+##### Bemenet:
 Egy arff formátumú fájl
 
-#### Kimenet:
+##### Kimenet:
 Egy padnas dataframe a szükséges adatokkal feltöltve.
 
-## Mutatók:
+### Mutatók:
 
-### Accuracy
+#### Accuracy
 
 Mennyire találta el az összes predikciót helyesen.
 
@@ -98,7 +98,7 @@ $$
 
 Kalkulációhoz: `accuracy_score` függvény
 
-### Sensitivity
+#### Sensitivity
 
 A valódi pozitívok közül hányat talált el.
 
@@ -108,7 +108,7 @@ $$
 
 Kalkulációhoz: `recall_score` függvény
 
-### Specificity
+#### Specificity
 
 A valódi negatívok közül hányat ismert fel.
 
@@ -116,7 +116,7 @@ $$
 \text{Specificity} = \frac{TN}{TN + FP}
 $$
 
-### F1 Score
+#### F1 Score
 
 A pontosság (precision) és a visszahívás (recall) harmonikus átlaga.
 
@@ -126,7 +126,7 @@ $$
 
 Kalkulációhoz: `f1_score` függvény
 
-### G-mean
+#### G-mean
 
 Egyensúlyozza a pozitív és negatív osztály teljesítményét.
 
