@@ -1,5 +1,16 @@
 # Dokumentáció
 
+## Conda környezet létrehozása
+
+- [MiniConda letöltése](https://www.anaconda.com/docs/getting-started/miniconda/main)
+
+```
+conda create -n sklearn-env -c conda-forge scikit-learn
+conda activate sklearn-env
+```
+
+- [Sklearn telepítési dokumentáció](https://scikit-learn.org/stable/install.html)
+
 ## Modul felépítés
 
 - binary_classification
@@ -11,6 +22,57 @@
 | config                | Az összes futtatható osztályozó + hyper paramater tunning |
 | search_for_classifier | Az összes alapvető eszköz a `config` futtatásához         |
 
+### Környzet felépítése
+
+ - [ train/test fájlok ]
+ - params_for_models
+ - binary_classification
+   - config
+   - search_for_classifier
+ - [ Python file a futtatáshoz ]
+
+Pycharm-ban a `binary_classification` mappa **sources-root**!
+
+### Train és test fájl beállítása
+
+- binary_classification
+  - config
+
+```python
+train__path = [ "Train mappa helye" ]
+test__path = [ "test mappa helye" ]
+```
+### Paraméterek beállítása az osztályozókhoz
+
+- params_for_models
+  - [ osztályozóhoz tartozó fájl ]
+
+### Configuráció beállítása / hozzádása
+
+- binary_classification
+  - config
+
+```python
+def ComplementNB() -> None:
+    from sklearn.naive_bayes import ComplementNB
+    conf: dict[str, str | list[str]] = read_json_test_params("params_for_models/ComplementNB_params.json")
+    automated_file_select_search(train__path, test__path, ComplementNB, conf, "ComplementNB", raw_output=False,
+                                 save=True)
+```
+
+Kofiguráció helyének beállítása
+
+```python
+conf: dict[str, str | list[str]] = read_json_test_params("params_for_models/[ konfig fájl ]")
+```
+
+### Példa kód
+
+```python
+from binary_classification.config import SVCsigmoid
+
+SVCsigmoid()
+```
 
 ## Komponensek
 ### Több fájl mód: `automated_file_select_search`
