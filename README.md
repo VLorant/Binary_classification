@@ -262,7 +262,7 @@ Kalkulációhoz: `auc` függvény
       0.4745044847
     ],
     [
-      // UAC score
+      0.5
     ]
   ]
 }
@@ -278,6 +278,7 @@ Kalkulációhoz: `auc` függvény
 | G-mean      | 0.4745044847 |
 | UAC         | ≈            |
 
+**Ezek az értékek kizárolag példa értéküek!**
 
 ## Szükséges könyvtárak:
 
