@@ -33,6 +33,8 @@ conda activate sklearn-env
 
 Pycharm-ban a `binary_classification` mappa **sources-root**!
 
+**Imports update után nem kötelező!**
+
 ### Train és test fájl beállítása
 
 - binary_classification
