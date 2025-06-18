@@ -223,7 +223,7 @@ $$
 Numerikus közelítés (trapéz módszer)
 
 $$
-\text{AUC} \approx \sum_{i=1}^{n-1}({\text{FPR}_{i+1} - \text{FPR}_i}) \cdot \frac{\text{TPR}_{i+1}+\text{TPR}_i}{2}
+\text{AUC} \approx \sum_{i=1}^{n-1}({\text{FPR}_{i+1} - \text{FPR}_i})
 $$
 
 Kalkulációhoz: `auc` függvény
