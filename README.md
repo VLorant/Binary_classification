@@ -276,7 +276,7 @@ Kalkulációhoz: `auc` függvény
 | Specificity | 0.8462962963 |
 | F1          | 0.2008885455 |
 | G-mean      | 0.4745044847 |
-| UAC         | ≈            |
+| UAC         | 0.5          |
 
 **Ezek az értékek kizárolag példa értéküek!**
 
