@@ -105,6 +105,7 @@ Tartalmazza:
 * Specificity
 * F1
 * G-mean
+* AUC
 
 
 
@@ -139,6 +140,7 @@ Tartalmazza:
 * Specificity
 * F1
 * G-mean
+* AUC
 
 ### További információk:
 
@@ -197,6 +199,34 @@ Egyensúlyozza a pozitív és negatív osztály teljesítményét.
 $$
 G\text{-mean} = \sqrt{\text{Sensitivity} \cdot \text{Specificity}}
 $$
+
+#### AUC
+
+Megmutatja, hogy a modell mennyire jól különíti el a pozitív és negatív osztályokat.
+
+$$
+\text{AUC} = \int_0^1 \text{TPR}(\text{FPR}) \, d(\text{FPR})
+$$
+
+TPR (True Positive Rate)
+
+$$
+\text{TPR} = \frac{TP}{TP + FN}
+$$
+
+FPR (False Positive Rate)
+
+$$
+\text{FPR} = \frac{FP}{FP + TN}
+$$
+
+Numerikus közelítés (trapéz módszer)
+
+$$
+\text{AUC} \approx \sum_{i=1}^{n-1} \left( \text{FPR}_{i+1} - \text{FPR}_i \right) \cdot \frac{\text{TPR}_{i+1} + \text{TPR}_i}{2}
+$$
+
+Kalkulációhoz: `auc` függvény
 
 ## Példa kimenetek:
 
