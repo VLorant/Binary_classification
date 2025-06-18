@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from scipy.io import arff
 from sklearn.base import ClassifierMixin
-from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix
+from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix, auc
 from sklearn.model_selection import GridSearchCV, RepeatedStratifiedKFold
 
 
@@ -60,7 +60,7 @@ def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: 
     search.fit(X, y)
     scores = pd.DataFrame(
         index=[1, 2, 3],
-        columns=['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean'],
+        columns=['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean', 'AUC'],
         dtype=np.float64
     )
     for i in range(1, 4):
@@ -74,7 +74,8 @@ def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: 
             recall_score(y_test, y_pred, pos_label=1),
             tn / (tn + fp),
             f1_score(y_test, y_pred, pos_label=1),
-            np.sqrt(recall_score(y_test, y_pred, pos_label=1) * (tn / (tn + fp)))
+            np.sqrt(recall_score(y_test, y_pred, pos_label=1) * (tn / (tn + fp))),
+            auc(y_test, y_pred)
         ]
     if not raw_output:
         datas = pd.DataFrame(data=scores.mean(), index=['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean'],
