@@ -1,4 +1,4 @@
-from search_for_classifier import read_json_test_params, automated_file_select_search
+from .search_for_classifier import read_json_test_params, automated_file_select_search
 
 train__path = "SyntImbNoisyDataForClassification/train"
 test__path = "SyntImbNoisyDataForClassification/test"
