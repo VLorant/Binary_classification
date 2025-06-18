@@ -242,7 +242,8 @@ Kalkulációhoz: `auc` függvény
     "Sensitivity",
     "Specificity",
     "F1",
-    "G-mean"
+    "G-mean",
+    "UAC"
   ],
   "data": [
     [
@@ -259,6 +260,9 @@ Kalkulációhoz: `auc` függvény
     ],
     [
       0.4745044847
+    ],
+    [
+      // UAC score
     ]
   ]
 }
@@ -272,6 +276,7 @@ Kalkulációhoz: `auc` függvény
 | Specificity | 0.8462962963 |
 | F1          | 0.2008885455 |
 | G-mean      | 0.4745044847 |
+| UAC         | ≈            |
 
 
 ## Szükséges könyvtárak:
