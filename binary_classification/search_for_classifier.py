@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from scipy.io import arff
 from sklearn.base import ClassifierMixin
-from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix, auc
+from sklearn.metrics import f1_score, accuracy_score, recall_score, confusion_matrix, auc, balanced_accuracy_score
 from sklearn.model_selection import GridSearchCV, RepeatedStratifiedKFold
 
 
@@ -54,13 +54,14 @@ def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: 
         df['Class'] = df['Class'].astype(int)
         return df
 
+    score_cols: list[str] = ['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean', 'AUC', 'Balanced Accuracy']
     data = read_arff(u_train)
     X = data.iloc[:, :u_features]
     y = data.iloc[:, u_features]
     search.fit(X, y)
     scores = pd.DataFrame(
         index=[1, 2, 3],
-        columns=['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean', 'AUC'],
+        columns=score_cols,
         dtype=np.float64
     )
     for i in range(1, 4):
@@ -75,11 +76,11 @@ def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: 
             tn / (tn + fp),
             f1_score(y_test, y_pred, pos_label=1),
             np.sqrt(recall_score(y_test, y_pred, pos_label=1) * (tn / (tn + fp))),
-            auc(y_test, y_pred)
+            auc(y_test, y_pred),
+            balanced_accuracy_score(y_test, y_pred)
         ]
     if not raw_output:
-        datas = pd.DataFrame(data=scores.mean(), index=['Accuracy', 'Sensitivity', 'Specificity', 'F1', 'G-mean'],
-                             columns=['Mean'])
+        datas = pd.DataFrame(data=scores.mean(), index=score_cols, columns=['Mean'])
         if save:
             datas.to_json(save_file_name + '.json', orient='split')
         return datas
