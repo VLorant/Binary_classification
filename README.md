@@ -230,6 +230,12 @@ $$
 
 Kalkulációhoz: `auc` függvény
 
+#### Balanced Accuracy
+
+The balanced accuracy in binary and multiclass classification problems to deal with imbalanced datasets. It is defined as the average of recall obtained on each class.
+
+Kalkulációhoz: `balanced_accuracy` függvény
+
 ## Példa kimenetek:
 
 ### Json file:
