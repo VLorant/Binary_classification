@@ -106,6 +106,7 @@ Tartalmazza:
 * F1
 * G-mean
 * AUC
+* Balanced Accuracy
 
 
 
@@ -141,6 +142,7 @@ Tartalmazza:
 * F1
 * G-mean
 * AUC
+* Balanced Accuracy
 
 ### További információk:
 
