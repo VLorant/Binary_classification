@@ -243,7 +243,8 @@ Kalkulációhoz: `auc` függvény
     "Specificity",
     "F1",
     "G-mean",
-    "UAC"
+    "UAC",
+    "Balanced Accuracy"
   ],
   "data": [
     [
@@ -263,20 +264,24 @@ Kalkulációhoz: `auc` függvény
     ],
     [
       0.5
+    ],
+    [
+      0.5
     ]
   ]
 }
 ```
 ### Pandas dataframe:
 
-|             | Mean         |
-|-------------|--------------|
-| Accuracy    | 0.7883333333 |
-| Sensitivity | 0.2666666667 |
-| Specificity | 0.8462962963 |
-| F1          | 0.2008885455 |
-| G-mean      | 0.4745044847 |
-| UAC         | 0.5          |
+|                   | Mean         |
+|-------------------|--------------|
+| Accuracy          | 0.7883333333 |
+| Sensitivity       | 0.2666666667 |
+| Specificity       | 0.8462962963 |
+| F1                | 0.2008885455 |
+| G-mean            | 0.4745044847 |
+| UAC               | 0.5          |
+| Balanced Accuracy | 0.5          |
 
 **Ezek az értékek kizárolag példa értéküek!**
 
