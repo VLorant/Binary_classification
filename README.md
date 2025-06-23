@@ -290,7 +290,7 @@ For calculation: `balanced_accuracy` function
 | UAC               | 0.5          |
 | Balanced Accuracy | 0.5          |
 
-**Ezek az értékek kizárolag példa értéküek!**
+**These values are for example purposes only!**
 
 ## Dependencies:
 
