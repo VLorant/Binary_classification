@@ -175,7 +175,7 @@ cython_debug/
 
 # testing files
 
-SyntImbNoisyDataForClassification/
+# SyntImbNoisyDataForClassification/
 test*.py
 
 # idea files
