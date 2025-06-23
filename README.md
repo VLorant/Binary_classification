@@ -76,7 +76,7 @@ SVCsigmoid()
 
  - ignore_error
 
-**It runs the classifier(s) also when an error occurred**
+**It also runs the classifier(s) when an error occurs.**
 
 ## Components
 ### Multi-file mode: `automated_file_select_search`
