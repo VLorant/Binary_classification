@@ -292,7 +292,7 @@ For calculation: `balanced_accuracy` function
 
 **These values are for example purposes only!**
 
-## Dependencies:
+## Dependencies
 
 * Numpy
 * Pandas
@@ -302,6 +302,10 @@ For calculation: `balanced_accuracy` function
 * io
 * os
 * typing
+
+## Citation of sources
+
+* [SyntImbNoisyDataForClassification](https://github.com/szghlm/SyntImbNoisyData)
 
 ## Flowchart
 ### `search_best_params`
