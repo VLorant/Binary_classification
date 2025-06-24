@@ -6,7 +6,12 @@
 
 ```
 conda create -n sklearn-env -c conda-forge scikit-learn
+```
+```
 conda activate sklearn-env
+```
+```
+pip install pandas
 ```
 
 - [Sklearn installation instructions](https://scikit-learn.org/stable/install.html)
