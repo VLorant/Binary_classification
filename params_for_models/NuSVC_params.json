@@ -2,43 +2,33 @@
   "nu": [
     0.1,
     0.25,
-    0.5,
-    0.75,
-    1.0
+    0.5
   ],
   "kernel": [
     "linear",
-    "poly",
     "rbf",
-    "sigmoid"
+    "poly"
   ],
   "degree": [
-    2,
-    3,
-    4,
-    5
+    3
   ],
   "gamma": [
-    "scale",
-    "auto"
+    "scale"
   ],
   "coef0": [
     0.0,
-    0.1,
-    0.5,
-    1.0
+    0.5
   ],
   "shrinking": [
-    true,
-    false
+    true
   ],
   "probability": [
-    true,
     false
   ],
-  "class_weight": ["balanced"],
+  "class_weight": [
+    "balanced"
+  ],
   "decision_function_shape": [
-    "ovo",
     "ovr"
   ]
 }
