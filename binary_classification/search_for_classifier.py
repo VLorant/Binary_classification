@@ -14,6 +14,15 @@ from sklearn.model_selection import GridSearchCV, RepeatedStratifiedKFold
 
 
 def runtime(func: Callable) -> Callable:
+    """
+    Time counting wrapper
+
+    Parameters:
+        func: function
+
+    Returns:
+        function
+    """
     @wraps(func)
     def wrapper(*args, **kwargs):
         import time
@@ -30,6 +39,22 @@ def runtime(func: Callable) -> Callable:
 def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: str, u_test: list[str], u_features: int,
                        save_file_name: str,
                        raw_output: bool = False, save: bool = False) -> pd.DataFrame:
+    """
+    To find the best parameters for a classifier
+
+    Parameters:
+        u_model: Classifier
+        u_params: Dictionary of parameters
+        u_train: Path to the training data
+        u_test: Path to the test data
+        u_features: Number of features
+        save_file_name: Path to the output file
+        raw_output: Raw output of the model
+        save: Save the model
+
+    Returns:
+        pd.DataFrame: DataFrame of best parameters
+    """
     cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=5, random_state=20)
 
     search = GridSearchCV(
@@ -94,6 +119,21 @@ def search_best_params(u_model: Type[ClassifierMixin], u_params: dict, u_train: 
 @runtime
 def automated_file_select_search(train_path: str, test_path: str, u_model: Type[ClassifierMixin], u_params: dict,
                                  save_file_name: str, raw_output: bool = False, save: bool = False):
+    """
+    Automatically go through all the files and find the best parameters
+
+    Parameters:
+        train_path: Path to the training data
+        test_path: Path to the test data
+        u_model: Classifier
+        u_params: Dictionary of parameters
+        save_file_name: Path to the output file
+        raw_output: Raw output of the model
+        save: Save the model
+
+    Returns:
+        pd.DataFrame: DataFrame of best parameters
+    """
     def sorting_params(f_name: str):
         n = re.search(r'N_(\d+)', f_name)
         d = re.search(r'D_(\d+)', f_name)
@@ -119,6 +159,15 @@ def automated_file_select_search(train_path: str, test_path: str, u_model: Type[
 
 @runtime
 def read_json_test_params(file: str) -> dict[str, Any]:
+    """
+    Read the JSON file which contains the testing parameters
+
+    Parameters:
+        file: Path to the JSON file
+
+    Returns:
+        dict[str, Any]: Testing parameters
+    """
     with open(file, 'r') as f:
         lst = json.load(f)
     return lst
