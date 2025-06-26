@@ -180,3 +180,6 @@ test*.py
 
 # idea files
 .idea
+
+#összefüz
+scriptek/
