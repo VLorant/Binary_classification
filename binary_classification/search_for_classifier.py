@@ -134,12 +134,16 @@ def automated_file_select_search(train_path: str, test_path: str, u_model: Type[
     Returns:
         pd.DataFrame: DataFrame of best parameters
     """
+
     def sorting_params(f_name: str):
         n = re.search(r'N_(\d+)', f_name)
         d = re.search(r'D_(\d+)', f_name)
         n_min = re.search(r'Nmin_(\d+)', f_name)
         z_min = re.search(r'Zmin_(\d+)', f_name)
-        return int(n.group(1)), int(d.group(1)), int(n_min.group(1)), int(z_min.group(1))
+        cl = re.search(r'CL_(\d+)', f_name)
+        cl2 = re.search(r'_(\d+)-R', f_name)
+        return int(n.group(1)), int(d.group(1)), int(n_min.group(1)), int(z_min.group(1)), int(cl.group(1)), int(
+            cl2.group(1))
 
     train_files = listdir(train_path)
     train_files.sort(key=sorting_params)
