@@ -68,7 +68,7 @@ def NuSVClinear() -> None:
 
 def NuSVCpoly() -> None:
     from sklearn.svm import NuSVC
-    conf: dict[str, str | list[str]] = read_json_test_params("params_for_models/NuSVCpoly_params.json")
+    conf: dict[str, str | list[str]] = read_json_test_params("params_for_models/NuSVCpoly_params_old.json")
     automated_file_select_search(train__path, test__path, NuSVC, conf, "NuSVCpoly", raw_output=False, save=True)
 
 

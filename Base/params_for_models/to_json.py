@@ -165,7 +165,7 @@ def NuSVCpoly() -> None:
         'probability': [True, False],
         'class_weight': 'balanced',
     }
-    with open('NuSVCpoly_params.json', 'w') as f:
+    with open('NuSVCpoly_params_old.json', 'w') as f:
         json.dump(lst, f)
 
 
