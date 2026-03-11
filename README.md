@@ -1,3 +1,7 @@
+# Licensing
+- The source code is licensed under the [Apache License 2.0](LICENSE).
+- All figures and data are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
 # Documentation
 
 ## Conda environment creation
