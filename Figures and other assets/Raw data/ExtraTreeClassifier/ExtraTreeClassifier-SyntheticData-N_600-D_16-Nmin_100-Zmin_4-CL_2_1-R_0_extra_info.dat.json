@@ -1,0 +1,1 @@
+{"columns":["Mean"],"index":["Accuracy","Sensitivity","Specificity","F1","G-mean","AUC","Balanced Accuracy"],"data":[[0.675],[0.2],[0.77],[0.1701467777],[0.3921886575],[0.3333333333],[0.485]]}
